@@ -151,7 +151,7 @@ class AdminTaxista extends Component {
           </Col>
         </Row>
 
-          <Button>Registrarse</Button>
+          <Button>Registrar</Button>
         </Form>
         
         {this.state.res && (
