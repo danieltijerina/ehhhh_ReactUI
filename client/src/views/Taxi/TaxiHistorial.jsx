@@ -1,4 +1,3 @@
-import Global from '../../util'
 import React, { Component } from 'react';
 import TableRender from '../../components/TableRenderServicios'
 import { Redirect, Link, Route, Switch } from 'react-router-dom';
@@ -12,7 +11,7 @@ class App extends Component {
     	dataReady: false
     };
 
-	   var url = Global.url+"/getViajesFromCliente?username=";
+	   var url = "http://10.23.22.91:5000/getViajesFromCliente?username=";
 	   url += localStorage.username;
 	   fetch(url, {
         method: "GET", // *GET, POST, PUT, DELETE, etc.

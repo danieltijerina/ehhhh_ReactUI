@@ -26,24 +26,14 @@ class UserNavbar extends Component {
       <div>
         <Navbar color="dark" dark expand="sm" className="mb-2">
           <NavbarBrand>
-            <Link to="/user/historial">Taxi Unico</Link>
+            <Link to="/taxi/historial">Taxi Unico</Link>
           </NavbarBrand>
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
               <NavItem onClick={this.toggle}>
                 <NavLink>
-                  <Link to="/user/servicios">Servicios</Link>
-                </NavLink>
-              </NavItem>
-              <NavItem onClick={this.toggle}>
-                <NavLink>
-                  <Link to="/user/pago">Metodos de Pago</Link>
-                </NavLink>
-              </NavItem>
-              <NavItem onClick={this.toggle}>
-                <NavLink>
-                  <Link to="/user/historial">Historial</Link>
+                  <Link to="/taxi/historial">Historial</Link>
                 </NavLink>
               </NavItem>
             </Nav>

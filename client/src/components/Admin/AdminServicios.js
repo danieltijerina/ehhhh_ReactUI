@@ -16,15 +16,15 @@ class AdminServicios extends Component {
   handleSubmit(event) {
     event.preventDefault();
     const data = new FormData(event.target);
-  
-    const args={};
+
+    const args = {};
     for (let key of data.keys()) {
       args[key] = data.get(key);
     }
     console.log(args);
 
     this.setState({
-      res: JSON.stringify(args, null, 2),
+      res: JSON.stringify(args, null, 2)
     });
 
     fetch(Global.url+"/getViajesFromCliente?username="+args['username'], {
@@ -52,12 +52,16 @@ class AdminServicios extends Component {
         <Form onSubmit={this.handleSubmit}>
           <FormGroup>
             <Label htmlFor="username">Usuario de Cliente</Label>
-            <Input id="username" name="username" type="text" placeholder="Usuario" />
+            <Input
+              id="username"
+              name="username"
+              type="text"
+              placeholder="Usuario"
+            />
           </FormGroup>
 
           <Button>Consultar Historial</Button>
         </Form>
-        
         {this.state.res && this.state.dataReady &&(
           <div className="res-block">
             <br/>

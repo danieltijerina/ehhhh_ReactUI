@@ -32,13 +32,13 @@ class AdminNavbar extends Component {
 								<NavItem>
 									<NavLink><Link to="/admin/clientes">Viajes</Link></NavLink>
 								</NavItem>
-								<NavItem>
+								<NavItem onClick={this.toggle}>
 									<NavLink><Link to="/admin/taxis">Taxistas</Link></NavLink>
 								</NavItem>
-								<NavItem>
+								<NavItem onClick={this.toggle}>
 									<NavLink><Link to="/admin/servicios">Servicios</Link></NavLink>
 								</NavItem>
-								<NavItem>
+								<NavItem onClick={this.toggle}>
 									<NavLink><Link to="/admin/encuestas">Encuestas</Link></NavLink>
 								</NavItem>
 							</Nav>
