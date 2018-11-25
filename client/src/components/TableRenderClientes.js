@@ -18,7 +18,7 @@ class TableRender extends Component {
 	    <thead>
 	    	<tr>
 	    		<th>ID</th>
-	    		<th>User</th>
+	    		<th>Usuario</th>
 	    		<th>Nombre</th>
 	    		<th>Apellido</th>
 	    	</tr>
