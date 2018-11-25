@@ -24,21 +24,21 @@ class AdminNavbar extends Component {
 	render() {
 		return(
 			<div>
-				<Navbar color="dark" dark expand="sm" className="mb-5">
+				<Navbar color="dark" dark expand="sm" className="mb-2">
 						<NavbarBrand><Link to="/admin/clientes">Admin Taxi Unico</Link></NavbarBrand>
 						<NavbarToggler onClick={this.toggle} />
 						<Collapse isOpen={this.state.isOpen} navbar>
 							<Nav className="ml-auto" navbar>
-								<NavItem>
+								<NavItem onClick={this.toggle}>
 									<NavLink><Link to="/admin/clientes">Clientes</Link></NavLink>
 								</NavItem>
-								<NavItem>
+								<NavItem onClick={this.toggle}>
 									<NavLink><Link to="/admin/taxis">Taxistas</Link></NavLink>
 								</NavItem>
-								<NavItem>
+								<NavItem onClick={this.toggle}>
 									<NavLink><Link to="/admin/servicios">Servicios</Link></NavLink>
 								</NavItem>
-								<NavItem>
+								<NavItem onClick={this.toggle}>
 									<NavLink><Link to="/admin/encuestas">Encuestas</Link></NavLink>
 								</NavItem>
 							</Nav>

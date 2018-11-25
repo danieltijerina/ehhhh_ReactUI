@@ -24,15 +24,15 @@ class AppNavbar extends Component {
 	render() {
 		return(
 			<div>
-				<Navbar color="dark" dark expand="sm" className="mb-5">
+				<Navbar color="dark" dark expand="sm" className="mb-2">
 						<NavbarBrand><Link to="/home/us">Taxi Único</Link></NavbarBrand>
 						<NavbarToggler onClick={this.toggle} />
 						<Collapse isOpen={this.state.isOpen} navbar>
 							<Nav className="ml-auto" navbar>
-								<NavItem>
+								<NavItem onClick={this.toggle}>
 									<NavLink><Link to="/home/login">Login</Link></NavLink>
 								</NavItem>
-								<NavItem>
+								<NavItem onClick={this.toggle}>
 									<NavLink><Link to="/home/signup">Signup</Link></NavLink>
 								</NavItem>
 							</Nav>
