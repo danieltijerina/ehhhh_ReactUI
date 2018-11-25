@@ -42,7 +42,7 @@ const PersonRow = (props) => {
         { props.data.name }
       </td>
       <td>
-      	{ props.data.lastname }
+      	{ props.data.lastName }
       </td>
     </tr>
   );

@@ -1,12 +1,15 @@
+import Global from '../util';
 import React, { Component } from 'react';
 import { Button, Form, FormGroup, Label, Input, Container } from 'reactstrap';
-import App from '../views/User';
+import User from '../views/User';
+import Admin from '../views/Admin';
 
 class Login extends Component {
   constructor() {
     super();
     this.state = {
-      isAuthenticated: false
+      isAuthenticated: false,
+      type: ''
     };
     this.handleSubmit = this.handleSubmit.bind(this);
   }
@@ -25,7 +28,7 @@ class Login extends Component {
       res: JSON.stringify(args, null, 2),
     });
 
-    fetch("http://10.23.22.91:5000/login", {
+    fetch(Global.url + "/login", {
         method: "POST", // *GET, POST, PUT, DELETE, etc.
         mode: "cors", // no-cors, cors, *same-origin
         cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
@@ -42,13 +45,18 @@ class Login extends Component {
         localStorage.setItem('username', r['username']);
         localStorage.setItem('user_id', r['id']);
         console.log(r)
+        this.setState({type: args['registrationType']});
         this.setState({isAuthenticated: true});
+        console.log(this.state.type);
       });
   }
 
   render() {
-      if(this.state.isAuthenticated) {
-        return( <App/> );
+      if(this.state.isAuthenticated && this.state.type=='U') {
+        return( <User/> );
+      }
+      if(this.state.isAuthenticated && this.state.type=='A') {
+        return( <Admin/> );
       }
       return (
       <Container>

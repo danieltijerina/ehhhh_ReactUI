@@ -7,7 +7,7 @@ class App extends Component {
   render() {
     return (
       <div className="login">
-      	<h1>Buscar un Cliente</h1>
+      	<h1>Resumen de Viajes</h1>
       	<br/>
         <AdminClientes/>
       </div>

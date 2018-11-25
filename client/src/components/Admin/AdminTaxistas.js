@@ -1,3 +1,4 @@
+import Global from '../../util';
 import React, { Component } from 'react';
 import App from '../../views/Admin';
 import { Col, Row, Button, Form, FormGroup, Label, Input, Container } from 'reactstrap';
@@ -26,7 +27,7 @@ class AdminTaxista extends Component {
     this.setState({
       res: JSON.stringify(args, null, 2),
     });
-    fetch("http://10.23.22.91:5000/register", {
+    fetch(Global.url+"/register", {
         method: "POST", // *GET, POST, PUT, DELETE, etc.
         mode: "cors", // no-cors, cors, *same-origin
         cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached

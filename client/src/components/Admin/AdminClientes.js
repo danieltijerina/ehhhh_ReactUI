@@ -1,67 +1,52 @@
+import Global from '../../util'
 import React, { Component } from 'react';
 import { Button, Form, FormGroup, Label, Input, Container } from 'reactstrap';
-import TableRender from '../TableRenderClientes';
+import TableRender from '../TableRenderServicios';
 
 class AdminClientes extends Component {
   constructor() {
     super();
     this.state = {
-      data: [{
-          id: 1,
-          username: "dondaniel",
-          name: "Daniel",
-          lastname: "Tijerina"
-        }, {
-          id: 2,
-          username: "aaronga",
-          name: "Aaron",
-          lastname: "Garcia"
-        }]
+      data: {},
+      dataReady: false 
     };
-    this.handleSubmit = this.handleSubmit.bind(this);
 
-
-  }
-
-  handleSubmit(event) {
-    event.preventDefault();
-    const data = new FormData(event.target);
-  
-    const args={};
-    for (let key of data.keys()) {
-      args[key] = data.get(key);
-    }
-    console.log(args);
-
-    this.setState({
-      res: JSON.stringify(args, null, 2),
-    });
-    // fetch('/api/form-submit-url', {
-    //   method: 'POST',
-    //   body: data,
-    // });
+    fetch(Global.url+"/getAllViajes", {
+        method: "GET", // *GET, POST, PUT, DELETE, etc.
+        mode: "cors", // no-cors, cors, *same-origin
+        cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
+        credentials: "same-origin", // include, *same-origin, omit
+        headers: {
+            "Content-Type": "application/json; charset=utf-8",
+            // "Content-Type": "application/x-www-form-urlencoded",
+        },
+        redirect: "follow", // manual, *follow, error
+        referrer: "no-referrer" // body data type must match "Content-Type" header
+    }).then(r => r.json()) // parses response to JSON
+      .then(r => {
+        console.log(r)
+        this.setState({data: r});
+        this.setState({dataReady: true});
+      });
   }
 
   render() {
-    return (
+    if(this.state.dataReady) {
+      return (
+        <Container>
+            <div className="res-block">
+              <br/>
+              <h3>Viajes</h3>
+              <TableRender data={this.state.data}/>
+            </div>
+        </Container>
+    );}
+    return(
       <Container>
-        <Form onSubmit={this.handleSubmit}>
-          <FormGroup>
-            <Label htmlFor="username">Usuario de Cliente</Label>
-            <Input id="username" name="username" type="text" placeholder="Usuario" />
-          </FormGroup>
-
-          <Button>Consultar Informacion</Button>
-        </Form>
-        
-        {this.state.res && (
-          <div className="res-block">
-            <br/>
-            <TableRender data={this.state.data}/>
-            <h3>Data to be sent:</h3>
-            <pre>FormData {this.state.res}</pre>
-          </div>
-        )}
+        <div className="res-block">
+          <br/>
+          <h3>Viajes</h3>
+        </div>
       </Container>
     );
   }

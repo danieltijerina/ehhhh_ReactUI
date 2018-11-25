@@ -1,10 +1,15 @@
+import Global from '../util';
 import React, { Component } from 'react';
 import { Col, Row, Button, Form, FormGroup, Label, Input, Container } from 'reactstrap';
+import Login from '../views/Login';
 
 class Signup extends Component {
   constructor() {
     super();
-    this.state = {};
+    this.state = {
+      data: {},
+      isCreated: false
+    };
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
@@ -22,13 +27,31 @@ class Signup extends Component {
     this.setState({
       res: JSON.stringify(args, null, 2),
     });
-    // fetch('/api/form-submit-url', {
-    //   method: 'POST',
-    //   body: data,
-    // });
+    fetch(Global.url+"/register", {
+        method: "POST", // *GET, POST, PUT, DELETE, etc.
+        mode: "cors", // no-cors, cors, *same-origin
+        cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
+        credentials: "same-origin", // include, *same-origin, omit
+        headers: {
+            "Content-Type": "application/json; charset=utf-8",
+            // "Content-Type": "application/x-www-form-urlencoded",
+        },
+        redirect: "follow", // manual, *follow, error
+        referrer: "no-referrer", // no-referrer, *client
+        body: JSON.stringify(args), // body data type must match "Content-Type" header
+    }).then(r => r.json()) // parses response to JSON
+      .then(r => {
+        console.log(r)
+        this.setState({isCreated: true});
+      });
   }
 
   render() {
+    if(this.setState.isCreated){
+      return(
+        <Login/>
+      );
+    }
     return (
       <Container>
         <Form onSubmit={this.handleSubmit}>
@@ -36,23 +59,29 @@ class Signup extends Component {
         <Row form>
           <Col md="6">
             <FormGroup>
-                <Label htmlFor="name">Nombre</Label>
-                <Input id="name" name="name" type="text" placeholder="Nombre" />
+                <Label htmlFor="firstName">Nombre</Label>
+                <Input id="firstName" name="firstName" type="text" placeholder="Nombre" />
             </FormGroup>
           </Col>
           <Col md="6">
             <FormGroup>
-                <Label htmlFor="lastname">Apellido</Label>
-                <Input id="lastname" name="lastname" type="text" placeholder="Apellido" />
+                <Label htmlFor="lastName">Apellido</Label>
+                <Input id="lastName" name="lastName" type="text" placeholder="Apellido" />
             </FormGroup>
           </Col>
         </Row>
 
         <Row form>
-          <Col>
+          <Col md="6">
             <FormGroup>
                 <Label htmlFor="email">E-mail</Label>
                 <Input id="email" name="email" type="email" placeholder="E-mail" />
+            </FormGroup>
+          </Col>
+          <Col md="6">
+            <FormGroup>
+                <Label htmlFor="cellphone">Telefono</Label>
+                <Input id="cellphone" name="cellphone" type="text" placeholder="Telefono Celular" />
             </FormGroup>
           </Col>
         </Row>
@@ -60,14 +89,14 @@ class Signup extends Component {
         <Row form>
           <Col md="10">
             <FormGroup>
-                <Label htmlFor="dob">Fecha de nacimiento</Label>
-                <Input id="dob" name="dob" type="text" placeholder="YYYY-MM-DD" />
+                <Label htmlFor="date">Fecha de nacimiento</Label>
+                <Input id="date" name="date" type="text" placeholder="YYYY-MM-DD" />
             </FormGroup>
           </Col>
           <Col md="2">
             <FormGroup>
-                <Label htmlFor="sexo">Sexo</Label>
-                <Input id="sexo" name="sexo" type="select">
+                <Label htmlFor="sex">Sexo</Label>
+                <Input id="sex" name="sex" type="select">
                   <option>M</option>
                   <option>F</option>
                 </Input>

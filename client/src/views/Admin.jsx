@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import AdminNavbar from '../components/Admin/AdminNavbar';
+import AdminHome from './Admin/AdminHome';
 import AdminClientes from './Admin/AdminClientes';
 import AdminTaxista from './Admin/AdminTaxistas';
 import AdminServicios from './Admin/AdminServicios';
@@ -15,7 +16,7 @@ class App extends Component {
         <Container>
           <Redirect to="/admin/home"/>
           <Switch>
-            <Route path="/admin/home"/>
+            <Route path="/admin/home" component={AdminHome}/>
             <Route path="/admin/taxis" component={AdminTaxista}/>
             <Route path="/admin/servicios" component={AdminServicios}/>
             <Route path="/admin/clientes" component={AdminClientes}/>

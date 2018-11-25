@@ -25,12 +25,12 @@ class AdminNavbar extends Component {
 		return(
 			<div>
 				<Navbar color="dark" dark expand="sm" className="mb-5">
-						<NavbarBrand><Link to="/admin/clientes">Admin Taxi Unico</Link></NavbarBrand>
+						<NavbarBrand><Link to="/admin/home">Admin Taxi Unico</Link></NavbarBrand>
 						<NavbarToggler onClick={this.toggle} />
 						<Collapse isOpen={this.state.isOpen} navbar>
 							<Nav className="ml-auto" navbar>
 								<NavItem>
-									<NavLink><Link to="/admin/clientes">Clientes</Link></NavLink>
+									<NavLink><Link to="/admin/clientes">Viajes</Link></NavLink>
 								</NavItem>
 								<NavItem>
 									<NavLink><Link to="/admin/taxis">Taxistas</Link></NavLink>
