@@ -5,7 +5,7 @@ import Zono from './views/Zono'
 import User from './views/User'
 import Admin from './views/Admin'
 import Home from './views/Home'
-import Taxi from './views/Taxi'
+import Taxi from './views/Taxista'
 import { Redirect, Link, Route, Switch } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';

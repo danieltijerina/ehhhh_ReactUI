@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import { Button, Form, FormGroup, Label, Input, Container } from 'reactstrap';
 import User from '../views/User';
 import Admin from '../views/Admin';
+import Taxi from '../views/Taxista';
 
 class Login extends Component {
   constructor() {
@@ -57,6 +58,9 @@ class Login extends Component {
       }
       if(this.state.isAuthenticated && this.state.type=='A') {
         return( <Admin/> );
+      }
+      if(this.state.isAuthenticated && this.state.type=='T') {
+        return( <Taxi/> );
       }
       return (
       <Container>

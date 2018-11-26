@@ -58,7 +58,7 @@ class App extends Component {
   	if(this.state.taxi_dataReady && this.state.client_dataReady){
   		return(
 	  		<div className="login">
-	      	<h1>Buscar un Servicio</h1>
+	      	<h1>Administrador</h1>
 	      	<br/>
 	      	<h3>Taxistas</h3>
 	        <TableRenderClientes data={this.state.taxi_data}/>
@@ -70,7 +70,7 @@ class App extends Component {
   	}
     return (
       <div className="login">
-      	<h1>Buscar un Servicio</h1>
+      	<h1>Administrador</h1>
       </div>
     );
   }

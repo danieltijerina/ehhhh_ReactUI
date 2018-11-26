@@ -1,7 +1,7 @@
 import Global from '../util';
 import React, { Component } from 'react';
 import { Col, Row, Button, Form, FormGroup, Label, Input, Container } from 'reactstrap';
-import Login from '../views/Login';
+import Login from './Login';
 
 class Signup extends Component {
   constructor() {
@@ -43,96 +43,98 @@ class Signup extends Component {
       .then(r => {
         console.log(r)
         this.setState({isCreated: true});
+        console.log(this.state.isCreated);
       });
   }
 
   render() {
-    if(this.setState.isCreated){
+    if(this.state.isCreated){
       return(
         <Login/>
       );
-    }
-    return (
-      <Container>
-        <Form onSubmit={this.handleSubmit}>
-
-        <Row form>
-          <Col md="6">
-            <FormGroup>
-                <Label htmlFor="firstName">Nombre</Label>
-                <Input id="firstName" name="firstName" type="text" placeholder="Nombre" />
-            </FormGroup>
-          </Col>
-          <Col md="6">
-            <FormGroup>
-                <Label htmlFor="lastName">Apellido</Label>
-                <Input id="lastName" name="lastName" type="text" placeholder="Apellido" />
-            </FormGroup>
-          </Col>
-        </Row>
-
-        <Row form>
-          <Col md="6">
-            <FormGroup>
-                <Label htmlFor="email">E-mail</Label>
-                <Input id="email" name="email" type="email" placeholder="E-mail" />
-            </FormGroup>
-          </Col>
-          <Col md="6">
-            <FormGroup>
-                <Label htmlFor="cellphone">Telefono</Label>
-                <Input id="cellphone" name="cellphone" type="text" placeholder="Telefono Celular" />
-            </FormGroup>
-          </Col>
-        </Row>
-
-        <Row form>
-          <Col md="10">
-            <FormGroup>
-                <Label htmlFor="date">Fecha de nacimiento</Label>
-                <Input id="date" name="date" type="text" placeholder="YYYY-MM-DD" />
-            </FormGroup>
-          </Col>
-          <Col md="2">
-            <FormGroup>
-                <Label htmlFor="sex">Sexo</Label>
-                <Input id="sex" name="sex" type="select">
-                  <option>M</option>
-                  <option>F</option>
-                </Input>
-            </FormGroup>
-          </Col>
-        </Row>
-
-        <Row form>
-          <Col>
-            <FormGroup>
-                <Label htmlFor="username">Usuario</Label>
-                <Input id="username" name="username" type="text" placeholder="Usuario" />
-            </FormGroup>
-          </Col>
-        </Row>
-
-        <Row form>
-          <Col>
-            <FormGroup>
-                <Label htmlFor="password">Contraseña</Label>
-                <Input id="password" name="password" type="password" placeholder="Contraseña" />
-            </FormGroup>
-          </Col>
-        </Row>
-
-          <Button>Registrarse</Button>
-        </Form>
-        
-        {this.state.res && (
-          <div className="res-block">
-            <h3>Data to be sent:</h3>
-            <pre>FormData {this.state.res}</pre>
-          </div>
-        )}
-        </Container>
-    );
+    } else {
+        return (
+          <Container>
+            <Form onSubmit={this.handleSubmit}>
+    
+            <Row form>
+              <Col md="6">
+                <FormGroup>
+                    <Label htmlFor="firstName">Nombre</Label>
+                    <Input id="firstName" name="firstName" type="text" placeholder="Nombre" />
+                </FormGroup>
+              </Col>
+              <Col md="6">
+                <FormGroup>
+                    <Label htmlFor="lastName">Apellido</Label>
+                    <Input id="lastName" name="lastName" type="text" placeholder="Apellido" />
+                </FormGroup>
+              </Col>
+            </Row>
+    
+            <Row form>
+              <Col md="6">
+                <FormGroup>
+                    <Label htmlFor="email">E-mail</Label>
+                    <Input id="email" name="email" type="email" placeholder="E-mail" />
+                </FormGroup>
+              </Col>
+              <Col md="6">
+                <FormGroup>
+                    <Label htmlFor="cellphone">Telefono</Label>
+                    <Input id="cellphone" name="cellphone" type="text" placeholder="Telefono Celular" />
+                </FormGroup>
+              </Col>
+            </Row>
+    
+            <Row form>
+              <Col md="10">
+                <FormGroup>
+                    <Label htmlFor="date">Fecha de nacimiento</Label>
+                    <Input id="date" name="date" type="text" placeholder="YYYY-MM-DD" />
+                </FormGroup>
+              </Col>
+              <Col md="2">
+                <FormGroup>
+                    <Label htmlFor="sex">Sexo</Label>
+                    <Input id="sex" name="sex" type="select">
+                      <option>M</option>
+                      <option>F</option>
+                    </Input>
+                </FormGroup>
+              </Col>
+            </Row>
+    
+            <Row form>
+              <Col>
+                <FormGroup>
+                    <Label htmlFor="username">Usuario</Label>
+                    <Input id="username" name="username" type="text" placeholder="Usuario" />
+                </FormGroup>
+              </Col>
+            </Row>
+    
+            <Row form>
+              <Col>
+                <FormGroup>
+                    <Label htmlFor="password">Contraseña</Label>
+                    <Input id="password" name="password" type="password" placeholder="Contraseña" />
+                </FormGroup>
+              </Col>
+            </Row>
+    
+              <Button>Registrarse</Button>
+            </Form>
+            
+            {this.state.res && (
+              <div className="res-block">
+                <h3>Data to be sent:</h3>
+                <pre>FormData {this.state.res}</pre>
+              </div>
+            )}
+            </Container>
+        );
+      }
   }
 }
 
