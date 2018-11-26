@@ -1,6 +1,7 @@
 import Global from '../../util';
 import React, { Component } from 'react';
 import { Button, Form, FormGroup, Label, Input, Container } from 'reactstrap';
+import { Route, Redirect } from 'react-router-dom';
 import Historial from '../../views/User/UserHistorial';
 
 class UserServicio extends Component {
@@ -39,14 +40,22 @@ class UserServicio extends Component {
         body: JSON.stringify(args), // body data type must match "Content-Type" header
     }).then(r => r.json()) // parses response to JSON
       .then(r => {
-        console.log(r)
+        console.log(r);
+        alert("Viaje creado exitosamente");
         this.setState({isCreated: true});
       });
   }
 
   render() {
+    if(this.state.isCreated){
+      return(
+        <Historial/>
+      );
+    }
     return (
       <Container>
+        <h2>Solicitar un Servicio</h2>
+        <br/>
         <Form onSubmit={this.handleSubmit}>
           <FormGroup>
             <Label htmlFor="origen">Origen</Label>
